@@ -7,11 +7,13 @@ const postRouter = require('./routers/postsRouter')
 
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-    res.send('Hello boolean');
-})
+app.use(express.json());
 
-app.use('api/posts', postRouter);
+/*app.get('/', (req, res) => {
+    res.send('Hello boolean');
+})*/
+
+app.use('/api/posts', postRouter);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

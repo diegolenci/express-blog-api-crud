@@ -5,13 +5,26 @@ function index(req, res) {
 }
 
 function show(req, res) {
-    
-}
-
-function store(req, res) {
     const id = parseInt(req.params.id)
     const post = posts.find(post => post.id === id)
     res.json(post)
+}
+
+function store(req, res) {
+   const newId = posts[posts.length - 1].id + 1;
+
+   const newPost = {
+    id: newId,
+    title: req.body.title,
+    content: req.body.content,
+    image: req.body.image,
+    tags: req.body.tags
+   }
+
+   posts.push(newPost);
+
+   console.log(posts);
+   res.status(201).json(newPost)
 }
 
 function update(req, res) {
