@@ -3,8 +3,12 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-const postRouter = require('./routers/postsRouter')
+const postRouter = require('./routers/postsRouter');
+const errorsHandler = require('./middlewares/errorsHandler');
 
+//legge middlewares
+app.use(errorsHandler);
+//legge cartella public
 app.use(express.static('public'));
 
 app.use(express.json());
